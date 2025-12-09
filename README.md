@@ -1,90 +1,127 @@
-🏙️ Mumbai Flat Real Estate Intelligence
+# 🏙️ Mumbai Flat Real Estate Intelligence
 
-A complete data-driven application for analyzing real estate trends, predicting flat prices, and recommending apartments in the Mumbai Metropolitan Region (MMR).
+A comprehensive machine learning-powered analytics platform for Mumbai's real estate market, featuring price prediction, interactive visualizations, and intelligent property recommendations.
 
-🚀 Features
-🔍 1. Analysis Module
+## 📊 Live Demo
+*(coming Soon )*
 
-MMR Price per Sqft Geomap
+## ✨ Features
 
-Area vs Price Scatter
+### 🔍 **Analytics Dashboard**
+- **Geospatial Price Visualization**: Interactive map showing price per sqft across Mumbai
+- **Comparative Analysis**: Side-by-side BHK price distributions with box plots
+- **Market Trends**: Area vs price scatter plots and BHK distribution pie charts
+- **Insightful Metrics**: Location-based statistics and property pattern analysis
 
-BHK Distribution Pie Charts
+### 🎯 **Price Prediction Engine**
+- **High-Accuracy Model**: Random Forest Regressor with 92% R² score
+- **Comprehensive Features**:
+  - Location, area, bedrooms, bathrooms
+  - Property age, furnishing type, balcony count
+  - Price range estimation for better interpretability
+- **Optimized Performance**: GridSearchCV for hyperparameter tuning
+- **Smart Encoding**: Combination of ordinal, one-hot, and target encoding
 
-Side-by-side BHK Price Comparison
+### 🤝 **Intelligent Recommendations**
+- **Radius-Based Search**: Find apartments within specific kilometers of a location
+- **Similarity Matching**: Cosine similarity-based society recommendations
+- **Feature-Based Filtering**: Multiple criteria for personalized suggestions
 
-Location-based insights
+---
 
-💰 2. Price Predictor
+## 📂 Project Structure
 
-Built using:
-
-Random Forest Regressor
-
-GridSearchCV Hyperparameter Tuning
-
-Ordinal + OneHot + Target Encoding
-
-Final R² Score → 0.92
-
-Users can predict flat prices based on:
-
-Location
-
-Area
-
-BHK
-
-Bathrooms
-
-Balconies
-
-Property Age
-
-Furnishing Type
-
-🧭 3. Recommendation System
-
-Two types of recommendations:
-
-Radius-Based Apartment Finder
-
-Similarity-Based Apartment Recommender
-
-📌 Note: Demo dataset used for recommendation may contain sample society data.
-
-📦 mumbai-flat-real-estate-intelligence
+```text
+mumbai-flat-real-estate-intelligence/
 │
 ├── analytics_module/
-├── data_cleaning/
-├── datasets/
-├── feature selection and base model/
-├── frontend/
-│   ├── home.py
-│   ├── pages/
-│   ├── models/
+│   ├── analysis.ipynb            # Visualizations & Insights
+│   └── recommender-system.ipynb  # Recommendation logic
 │
-└── requirements.txt
-|
-└──gitattributes
+├── data_cleaning/                # Data Preprocessing Pipeline
+│   ├── data_processing.ipynb
+│   ├── eda-multivariate-analysis.ipynb
+│   ├── feature-eng.ipynb
+│   └── ... (imputation, outlier treatment)
+│
+├── datasets/
+│   ├── Mumbai_flat_list_raw.csv           # Original Kaggle Data
+│   ├── mumbai_flat_2.csv                  # Processed Data
+│   └── MMR_Housing_Residential_Projects.csv
+│
+├── feature_selection_and_base_model/
+│   ├── model_selection.ipynb
+│   └── feature_selection.ipynb
+│
+├── frontend/                     # Streamlit Application
+│   ├── home.py                   # Entry point
+│   ├── pages/
+│   │   ├── Analysis_App.py
+│   │   ├── Price_predictor.py
+│   │   └── recommendation.py
+│   └── models/                   # Serialized models (Exclude large files)
+│
+├── requirements.txt
+├── .gitattributes
 └── README.md
+```
+## 🚀 Quick Start
 
-🛠️ Technologies Used
+### Prerequisites
+- Python 3.8+
+- pip package manager
 
-Python
+### Installation
 
-Streamlit
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/mumbai-flat-real-estate-intelligence.git
+cd mumbai-flat-real-estate-intelligence
+```
+2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+3. Run the application
+```bash
+streamlit run frontend/home.py
+```
+4. Access the dashboard
+Open your browser and navigate to http://localhost:8501
 
-Scikit-learn
+## 📊 Data Sources
 
-Pandas, NumPy
+| Dataset | Description | Records | Purpose |
+|---------|-------------|---------|---------|
+| **Mumbai Flat Listings** | Primary dataset from Kaggle | 2,500 | Price prediction & analytics |
+| **mumbai_flat_2** | Supplementary dataset | 7,500 | Price prediction & analytics |
+| **MMR Housing Projects** | Generated sample data | 150 | Recommendation system demo |
 
-Plotly
+> **Note**: The recommendation system uses demo society data for educational purposes. Real-world deployment should use verified property listings.
 
-BeautifulSoup & Geopy
+## 🛠️ Technologies
 
-Machine Learning & EDA
+| Category | Tools |
+|:--------:|:-----:|
+| **Core Framework** | Python, Streamlit |
+| **Data Processing** | Pandas, NumPy |
+| **Machine Learning** | Scikit-learn, GridSearchCV |
+| **Visualization** | Plotly, Matplotlib |
+| **Geospatial** | Geopy, Folium |
+| **Similarity Search** | Cosine Similarity, Vectorization |
 
-📌 Author
-Vikas Maurya – Computer Engineering Student
-Building real-world ML applications in analytics & AI.
+## 📈 Model Performance
+
+| Metric | Score |
+|:------:|:-----:|
+| **R² Score** | 0.92 |
+| **MAE** | 0.24 |
+
+
+## 📄 License
+This project is for educational purposes. Please ensure compliance with data usage terms when using external datasets.
+
+## 👥 Acknowledgments
+Kaggle for providing the base datasets
+Streamlit community for excellent documentation
+Mumbai real estate portals for market insights
