@@ -1,0 +1,13 @@
+# Virtual environment
+mumbai_flat_env/
+
+# Pycache
+__pycache__/
+*/__pycache__/
+
+# VSCode settings
+.vscode/
+
+# Hidden OS files
+.DS_Store
+Thumbs.db
