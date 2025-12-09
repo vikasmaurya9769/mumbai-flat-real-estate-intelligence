@@ -66,6 +66,7 @@ Similarity-Based Apartment Recommender
 │
 └── requirements.txt
 |
+└──gitattributes
 └── README.md
 
 🛠️ Technologies Used
