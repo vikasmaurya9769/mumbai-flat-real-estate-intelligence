@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
 
 st.set_page_config(page_title="Apartment Recommender", layout="wide")
 
@@ -10,11 +11,28 @@ def load_pickle(path):
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-location_df = load_pickle('models\location_distance.pkl')
-cosine_sim1 = load_pickle('models\cosine_sim1.pkl')
-cosine_sim2 = load_pickle('models\cosine_sim2.pkl')
-cosine_sim3 = load_pickle('models\cosine_sim3.pkl')
+# Safe pickle loader
+@st.cache_resource
+def load_pickle(path):
+    with open(path, "rb") as f:
+        return pickle.load(f)
 
+# Base directory of THIS script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Build paths to all model files
+MODELS_DIR = os.path.normpath(os.path.join(BASE_DIR, "..", "models"))
+
+LOCATION_DF_PATH = os.path.join(MODELS_DIR, "location_distance.pkl")
+COS1_PATH = os.path.join(MODELS_DIR, "cosine_sim1.pkl")
+COS2_PATH = os.path.join(MODELS_DIR, "cosine_sim2.pkl")
+COS3_PATH = os.path.join(MODELS_DIR, "cosine_sim3.pkl")
+
+# Load all files
+location_df = load_pickle(LOCATION_DF_PATH)
+cosine_sim1 = load_pickle(COS1_PATH)
+cosine_sim2 = load_pickle(COS2_PATH)
+cosine_sim3 = load_pickle(COS3_PATH)
 
 # -------------------- Recommendation Logic ----------------------
 def recommend_properties_with_scores(property_name, top_n=5):

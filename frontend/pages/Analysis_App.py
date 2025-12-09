@@ -5,12 +5,19 @@ import pickle
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 st.set_page_config(page_title="Plotting Demo")
 
 st.markdown("<h1 style='text-align: center;'>Analytics</h1>", unsafe_allow_html=True)
 
-new_df = pd.read_csv(r'E:\Mumbai Flat Real Estate Intelligence\datasets\data viz.csv')
+# new_df = pd.read_csv(r'E:/Mumbai Flat Real Estate Intelligence/datasets/data viz.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # frontend/pages
+CSV_PATH = os.path.join(BASE_DIR, "..", "..", "datasets", "data viz.csv")
+
+CSV_PATH = os.path.normpath(CSV_PATH)  # Windows/Linux safe path
+
+new_df = pd.read_csv(CSV_PATH)
 
 
 st.header('location Price per Sqft Geomap')

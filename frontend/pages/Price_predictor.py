@@ -2,18 +2,33 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+import os
+
 st.set_page_config(page_title="viz Demo")
 
 #['bedrooms', 'bathrooms', 'balcony', 'property_age', 'major_location','built_up_area', 'furnishing_type']
 
 st.title('Mumbai Flat Price Predictor')
 
-with open('models\df.pkl','rb') as file:
-    df=pickle.load(file)
 
-with open('models\pipeline.pkl','rb') as file:
-    pipeline=pickle.load(file)
+# Path to the current file (Price_predictor.py or recommendation.py)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # frontend/pages
 
+# Build correct relative paths
+MODEL_DF_PATH = os.path.join(BASE_DIR, "..", "models", "df.pkl")
+MODEL_PIPELINE_PATH = os.path.join(BASE_DIR, "..", "models", "pipeline.pkl")
+
+# Normalize the path for Linux/Render (VERY IMPORTANT)
+MODEL_DF_PATH = os.path.normpath(MODEL_DF_PATH)
+MODEL_PIPELINE_PATH = os.path.normpath(MODEL_PIPELINE_PATH)
+
+
+# Load the pickles
+with open(MODEL_DF_PATH, "rb") as file:
+    df = pickle.load(file)
+
+with open(MODEL_PIPELINE_PATH, "rb") as file:
+    pipeline = pickle.load(file)
 st.header('Enter your inputs')
 
 major_location = st.selectbox('Location',sorted(df['major_location'].unique().tolist()))
