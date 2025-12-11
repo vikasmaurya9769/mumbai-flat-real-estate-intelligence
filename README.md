@@ -3,7 +3,7 @@
 A comprehensive machine learning-powered analytics platform for Mumbai's real estate market, featuring price prediction, interactive visualizations, and intelligent property recommendations.
 
 ## 📊 Live Demo
-*(coming Soon )*
+https://mumbai-flat-real-estate-intelligence-0.onrender.com
 
 ## ✨ Features
 
